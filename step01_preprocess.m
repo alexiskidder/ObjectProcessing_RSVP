@@ -69,8 +69,8 @@ function shortened_preprocess(subjectnr)
     T.subjectnr = T.eventnumber*0+subjectnr; %adds subject number to the farthest column 
     T2=table();
     T2.onset = stimonsample./hdr.Fs; %time of onset
-    T2.duration(:) = floor(.100*hdr.Fs); %duration of the trial? floor rounds down
-    T2.onsetsample = stimonsample; % sample number corresponding to the time of onset?
+    T2.duration(:) = floor(.100*hdr.Fs); %duration of the trial - floor rounds down
+    T2.onsetsample = stimonsample; % sample number corresponding to the time of onset
     T = [T2 T] %combines T and T2 to T
 
     xd = diff(diff([T.onset T.time_stimon])')';
@@ -89,9 +89,9 @@ function shortened_preprocess(subjectnr)
     cfg.reref = 'yes';
     cfg.refchannel = hdr.label(1:64);
     cfg.lpfilter = 'yes'; % want low-pass filter
-    cfg.lpfreq = 100; % frequency for the low-pass filter (CHANGED FROM LPFILTER - we didn't actually filter our data)
+    cfg.lpfreq = 100; % frequency for the low-pass filter (CHANGED FROM LPFILTER - we didn't actually filter our data in the paper)
     cfg.hpfilter = 'yes'; % want high-pass filter
-    cfg.hpfreq = .1; % frequency for high-pass filter (CHANGED FROM HPFILTER - we didn't actually filter our data)
+    cfg.hpfreq = .1; % frequency for high-pass filter (CHANGED FROM HPFILTER - we didn't actually filter our data in the paper)
     cfg.hpfiltord = 4;
     cfg.dftfilter = 'yes'; % want to enable notch filtering to eliminate power line noise
     data_raw = ft_preprocessing(cfg); %the actual command to start preprocessing of cfg dataset with everything specified above (trials, filtering)
@@ -103,7 +103,7 @@ function shortened_preprocess(subjectnr)
     cfg.resamplefs = 200; %frequency we are downsampling to 
     cfg.detrend = 'no'; % we are not detrending
     cfg.demean = 'yes'; % we are demeaning the data (baseline correction)
-    cfg.baselinewindow = [-0.1 0]; %window that the data is demeaned to (in seconds - so it's demeaning to the 100 ms before stimulus) - check this, I think it actally means 100 ms before the run starts
+    cfg.baselinewindow = [-0.1 0]; %window that the data is demeaned to (in seconds - so it's demeaning to the 100 ms before stimulus) 
     data = ft_resampledata(cfg,data_raw); %command that actually resamples the data according the specifications above
 
 %% cosmo

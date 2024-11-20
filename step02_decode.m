@@ -47,7 +47,7 @@ for b=0:1 %for both binarized = 0 and 1
     dsb = cosmo_average_samples(dsb,'count',4); % averages subsets of the dataset by 4 samples per average
     ma = {};
     ma.classifier = @cosmo_classify_lda; %type of classifier being used (linear discriminant analysis classifier)
-    ma.partitions = cosmo_nfold_partitioner(dsb); %creates the folds/partition scheme for the training/testing of the decoder - uses dsb.sa.chunks (which is 1 x 1040 - 1040 x 8 = total number of trials {potentially the 4 specified above x 2 because there is binarized and nonbinarized?})
+    ma.partitions = cosmo_nfold_partitioner(dsb); %creates the folds/partition scheme for the training/testing of the decoder - uses dsb.sa.chunks (which is 1 x 1040 - 1040 x 8 = total number of trials {potentially the 4 specified above x 2 because there is binarized and nonbinarized})
     ma.nproc=4;
     res = cosmo_searchlight(dsb,nh,@cosmo_crossvalidation_measure,ma); %actually performing the decoding
     res_cell_image{b+1} = res; % which cell are the results put in original = first cell :) 
@@ -61,8 +61,6 @@ nh = cosmo_interval_neighborhood(ds,'time','radius',0);
 res_cell_cat ={};
 for b=0:1
     dsb = cosmo_slice(ds,ds.sa.binary==b);
-    %dsb = cosmo_average_samples(dsb,'count',4); %no longer do this here
-    %because???
     ma = {};
     ma.classifier = @cosmo_classify_lda;
     ma.partitions = cosmo_nfold_partitioner(dsb);
