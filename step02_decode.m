@@ -13,9 +13,9 @@ pnum = 22;
 %% files and set up 
 
 if pnum < 10 
-    matsource = "/Users/f004p7b/Documents/australia/objects_project/analysis_bids/data/derivatives/cosmomvpa/sub-0" +pnum + "_cosmomvpa_short.mat" ; % output of the preprocessing script
+    matsource = "/Users/f004p7b/Documents/australia/objects_project/analysis_bids/data/derivatives/cosmomvpa/sub-0" +pnum + "_cosmomvpa.mat" ; % output of the preprocessing script
 else
-    matsource = "/Users/f004p7b/Documents/australia/objects_project/analysis_bids/data/derivatives/cosmomvpa/sub-" +pnum + "_cosmomvpa_short.mat" ; % output of the preprocessing script
+    matsource = "/Users/f004p7b/Documents/australia/objects_project/analysis_bids/data/derivatives/cosmomvpa/sub-" +pnum + "_cosmomvpa.mat" ; % output of the preprocessing script
 end
 
 load(matsource) 
@@ -106,10 +106,10 @@ end
 %% save file
 
 if pnum < 10
-    decoding_files = "/Users/f004p7b/Documents/australia/objects_project/analysis_bids/data/derivatives/decoding/sub-0" + pnum + "_res_decoding_short.mat";
+    decoding_files = "/Users/f004p7b/Documents/australia/objects_project/analysis_bids/data/derivatives/decoding/sub-0" + pnum + "_res_decoding.mat";
     save(decoding_files,'res_cell_asp','res_cell_cat','res_cell_image', 'res_cell_anim')
 else
-    decoding_files = "/Users/f004p7b/Documents/australia/objects_project/analysis_bids/data/derivatives/decoding/sub-" + pnum + "_res_decoding_short.mat";
+    decoding_files = "/Users/f004p7b/Documents/australia/objects_project/analysis_bids/data/derivatives/decoding/sub-" + pnum + "_res_decoding.mat";
     save(decoding_files,'res_cell_asp','res_cell_cat','res_cell_image', 'res_cell_anim')
 end
 
@@ -158,9 +158,9 @@ title('decoding animacy (animate/inanimate)')
 %% save plot
 fn = '/Users/f004p7b/Documents/australia/objects_project/plots/decoding_figures/';
 if pnum < 10
-    tempname = "sub-0" + pnum + "_decoding_short.png";
+    tempname = "sub-0" + pnum + "_decoding.png";
 else
-    tempname = "sub-" + pnum + "_decoding_short.png";
+    tempname = "sub-" + pnum + "_decoding.png";
 end
 
 tn = fn + tempname;

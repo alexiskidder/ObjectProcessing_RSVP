@@ -18,9 +18,9 @@ function shortened_preprocess(subjectnr)
     datapath = '/Users/f004p7b/Documents/australia/objects_project/analysis_bids/data'; %where raw data is located
     mkdir(sprintf('%s/derivatives/cosmomvpa',datapath)); %makes derivatives folder (bids format)
     
-    cosmofn = sprintf('%s/derivatives/cosmomvpa/sub-%02i_cosmomvpa_short.mat',datapath,subjectnr);
-    behavfn = sprintf('%s/sub-%02i/eeg/sub-%02i_task-targets_events_short.tsv',datapath,subjectnr,subjectnr);
-    source_behavfn = sprintf('%s/sourcedata/sub-%02i_task-targets_events.csv',datapath,subjectnr);
+    cosmofn = sprintf('%s/derivatives/cosmomvpa/sub-%02i_cosmomvpa.mat',datapath,subjectnr);
+    behavfn = sprintf('%s/sub-%02i/eeg/sub-%02i_task-targets_events.tsv',datapath,subjectnr,subjectnr);
+    source_behavfn = sprintf('%s/sourcedata/sub-%02i_task-targets.csv',datapath,subjectnr);
     source_filename = sprintf('%s/sourcedata/sub-%02i_task-targets_eeg.bdf',datapath,subjectnr);
     raw_filename = sprintf('%s/sub-%02i/eeg/sub-%02i_task-targets_eeg.bdf',datapath,subjectnr,subjectnr);
  
